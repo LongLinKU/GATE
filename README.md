@@ -80,22 +80,17 @@ eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1
 
 2. Activate the conda environment RSAIGE_v0
      ```
-       conda activate RSAIGE_v0
+       conda activate RSAIGE
        FLAGPATH=`which python | sed 's|/bin/python$||'`
        export LDFLAGS="-L${FLAGPATH}/lib"
        export CPPFLAGS="-I${FLAGPATH}/include"
      ```
 3. Install zlib 
+    ```
+    conda install conda-forge::zlib
+    #zlib should be under the same folder as FLAGPATH
+    ```
 
-     * download zlib and install zlin following the [link](https://geeksww.com/tutorials/libraries/zlib/installation/installing_zlib_on_ubuntu_linux.php)
-     * add the path to the zlib.h to ~/.bashrc
-     ```
-       export PATH=path_to_zlib:$PATH  
-     ```
-     * activate ~/.bashrc, you may need to log out and log in the system 
-     ```
-       source ~/.bashrc
-     ```
 
 4. Install GATE from the source code
 
@@ -114,4 +109,7 @@ eventTimeBinSize is used to set the bin size for evene times. eventTimeBinSize=1
        library(GATE, lib.loc=path_to_final_GATE_library)
      ```
 
+##  Run GATE
+   Can only be run in R. 
+   fitNULLGLMM(plinkFile='survival.10k',phenoFile='phenos.tsv', phenoCol='HeartFailure',eventTimeCol='HeartFailureTime',covarColList=c('age','sex','birthyear','height'), sampleIDColinphenoFile='particid',eventTimeBinSize=1,traitType='survival',outputPrefix='test.HeartFailure', nThreads=4, LOCO=F)
 	       
